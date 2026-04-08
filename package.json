@@ -1,6 +1,6 @@
 {
   "name": "@ayo0la/scroll-animations",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scroll-triggered text and element animations built on GSAP. charStagger, wordStagger, lineStagger, scrollFade, staggerCards.",
   "license": "MIT",
   "type": "module",
@@ -14,7 +14,10 @@
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/index.d.ts",
-  "files": ["dist", "README.md"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -26,7 +29,9 @@
     "gsap": ">=3.0.0"
   },
   "peerDependenciesMeta": {
-    "gsap": { "optional": false }
+    "gsap": {
+      "optional": false
+    }
   },
   "devDependencies": {
     "gsap": "^3.12.0",

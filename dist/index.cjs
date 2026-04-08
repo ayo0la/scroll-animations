@@ -28,10 +28,12 @@ __export(index_exports, {
 });
 module.exports = __toCommonJS(index_exports);
 
-// src/_splitAnimate.ts
+// src/_gsap.ts
 var import_gsap = require("gsap");
 var import_ScrollTrigger = require("gsap/ScrollTrigger");
 import_gsap.gsap.registerPlugin(import_ScrollTrigger.ScrollTrigger);
+
+// src/_splitAnimate.ts
 function splitElement(el, by) {
   if (by === "line") {
     const parts = el.innerHTML.split(/<br\s*\/?>/i);
@@ -53,6 +55,7 @@ function splitElement(el, by) {
   return Array.from(el.querySelectorAll(".ac"));
 }
 function _splitAnimate(el, splitBy, fromVars, options) {
+  if (typeof window === "undefined") return;
   const {
     duration = 0.6,
     delay = 0,
@@ -104,9 +107,6 @@ function lineStagger(selector, options = {}) {
 }
 
 // src/scrollFade.ts
-var import_gsap2 = require("gsap");
-var import_ScrollTrigger2 = require("gsap/ScrollTrigger");
-import_gsap2.gsap.registerPlugin(import_ScrollTrigger2.ScrollTrigger);
 function scrollFade(selector, options = {}) {
   if (typeof window === "undefined") return;
   const {
@@ -122,7 +122,7 @@ function scrollFade(selector, options = {}) {
   } = options;
   const el = typeof selector === "string" ? document.querySelector(selector) : selector;
   if (!el) return;
-  import_gsap2.gsap.from(el, {
+  import_gsap.gsap.from(el, {
     x,
     y,
     opacity,
@@ -139,9 +139,6 @@ function scrollFade(selector, options = {}) {
 }
 
 // src/staggerCards.ts
-var import_gsap3 = require("gsap");
-var import_ScrollTrigger3 = require("gsap/ScrollTrigger");
-import_gsap3.gsap.registerPlugin(import_ScrollTrigger3.ScrollTrigger);
 function staggerCards(selector, options = {}) {
   if (typeof window === "undefined") return;
   const {
@@ -157,7 +154,7 @@ function staggerCards(selector, options = {}) {
   } = options;
   const els = typeof selector === "string" ? Array.from(document.querySelectorAll(selector)) : [selector];
   if (!els.length) return;
-  import_gsap3.gsap.from(els, {
+  import_gsap.gsap.from(els, {
     x,
     y,
     opacity,
