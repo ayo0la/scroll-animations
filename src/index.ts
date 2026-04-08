@@ -6,3 +6,5 @@ export type {
   ScrollFadeOptions,
   StaggerCardsOptions,
 } from './types'
+
+export { charStagger } from './charStagger'
