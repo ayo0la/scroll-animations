@@ -9,3 +9,4 @@ export type {
 
 export { charStagger } from './charStagger'
 export { wordStagger } from './wordStagger'
+export { lineStagger } from './lineStagger'
