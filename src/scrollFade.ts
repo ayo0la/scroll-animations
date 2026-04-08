@@ -1,8 +1,5 @@
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap } from './_gsap'
 import type { ScrollFadeOptions } from './types'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export function scrollFade(
   selector: string | Element,

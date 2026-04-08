@@ -1,7 +1,8 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 
+const mockFrom = vi.hoisted(() => vi.fn())
 vi.mock('gsap', () => ({
-  gsap: { registerPlugin: vi.fn(), from: vi.fn() },
+  gsap: { registerPlugin: vi.fn(), from: mockFrom },
 }))
 vi.mock('gsap/ScrollTrigger', () => ({ ScrollTrigger: {} }))
 
@@ -11,6 +12,8 @@ describe('lineStagger', () => {
   beforeEach(() => {
     document.body.innerHTML = '<h2 class="target">Line one<br>Line two<br>Line three</h2>'
   })
+
+  afterEach(() => mockFrom.mockClear())
 
   it('returns early in SSR environment', () => {
     const win = (global as any).window
@@ -32,5 +35,13 @@ describe('lineStagger', () => {
     const el = document.querySelector('.target')!
     lineStagger(el)
     expect(document.querySelectorAll('.al').length).toBe(3)
+  })
+
+  it('calls gsap.from with the split lines', () => {
+    lineStagger('.target')
+    expect(mockFrom).toHaveBeenCalledOnce()
+    const [spans] = mockFrom.mock.calls[0]
+    expect(Array.isArray(spans)).toBe(true)
+    expect(spans.length).toBe(3) // 3 lines
   })
 })

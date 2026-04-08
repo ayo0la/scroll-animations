@@ -1,8 +1,5 @@
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap } from './_gsap'
 import type { StaggerCardsOptions } from './types'
-
-gsap.registerPlugin(ScrollTrigger)
 
 export function staggerCards(
   selector: string | Element,

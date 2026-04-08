@@ -1,8 +1,5 @@
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap } from './_gsap'
 import type { BaseOptions } from './types'
-
-gsap.registerPlugin(ScrollTrigger)
 
 type SplitBy = 'char' | 'word' | 'line'
 
@@ -36,6 +33,7 @@ export function _splitAnimate(
   fromVars: Record<string, unknown>,
   options: BaseOptions & { stagger: number }
 ): void {
+  if (typeof window === 'undefined') return
   const {
     duration = 0.6,
     delay = 0,
