@@ -8,3 +8,4 @@ export type {
 } from './types'
 
 export { charStagger } from './charStagger'
+export { wordStagger } from './wordStagger'
